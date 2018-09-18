@@ -57,7 +57,7 @@ const GC_store = MP_configure_store ();
    //  [S07251664|A01_DIrectory_01.txt::sec012a_app GC_store.subscribe drc1;^B]
 
    //  [S07251672|SEC_013.txt::SEC 013  L 131 notes-01;]
-   //  Remove code to create test data
+   //  code to create test data removed
 
 if (false)
             //[ if (false)  :end1;]
