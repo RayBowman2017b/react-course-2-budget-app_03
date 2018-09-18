@@ -1,4 +1,7 @@
+
 SEC_013.txt
+
+------------------------------------------------
 
 L-131
 
@@ -7,3 +10,19 @@ git init
 git add .
 git commit -m "Initial commit"
 
+ git add A01_Course_Notes/VSXMLrcov.bat
+
+//  [S07251665|sec012a_app.jsx::SEC 013  L 131 notes-01;^B]
+//  Remove code to create test data
+
+if (false)
+{
+
+.....................
+
+git commit -m "Remove dummy expense data"
+
+------------------------------------------------
+------------------------------------------------
+------------------------------------------------
+------------------------------------------------

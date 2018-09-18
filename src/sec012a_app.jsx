@@ -56,6 +56,12 @@ const GC_store = MP_configure_store ();
 
    //  [S07251664|A01_DIrectory_01.txt::sec012a_app GC_store.subscribe drc1;^B]
 
+   //  [S07251672|SEC_013.txt::SEC 013  L 131 notes-01;]
+   //  Remove code to create test data
+
+if (false)
+            //[ if (false)  :end1;]
+{
 GC_store.subscribe ( () =>
   {
     const L_state = GC_store.getState ();
@@ -74,6 +80,9 @@ GC_store.dispatch ( MP_addExpense ({ description: 'Water Bill', amount: 3300, cr
 GC_store.dispatch ( MP_addExpense ({ description: 'Gas Bill', amount: 2200, createdAt: L_august_03_2018 }) );
 GC_store.dispatch ( MP_addExpense ({ description: 'Rent', amount: 109500, createdAt: L_sept_04_2018 }) );
                 //[ MP_addExpense exe1;^B]
+}
+            //[ if (false)  :end1;^B]
+
 
 
 //  SEC_011 --- 104. Dropdown for Picking SortBy 8:41
