@@ -5,10 +5,15 @@ SEC_013.txt
 
 L-131
 
-git init
-
+git init --- Create a new git repo
+git status --- View the changes to your project code
+git add --- Add files to staging area
 git add .
+git commit -m "xxx" --- Creates a new commit with files from staging area
 git commit -m "Initial commit"
+git commit -m "commit 02"
+git log --- View recent commits
+
 
  git add A01_Course_Notes/VSXMLrcov.bat
 
@@ -21,6 +26,194 @@ if (false)
 .....................
 
 git commit -m "Remove dummy expense data"
+
+
+------------------------------------------------
+
+L-132
+
+
+https://github.com/RayBowman2017b/react-course-2-expensify-app
+
+Must set up a secure way to communicate with the github server
+ --- SSH (secure shell)
+
+    *** SHIFT+INSERT to copy-paste commands into git bash
+
+USE git bash
+> ls -a ~/.ssh
+
+
+search:
+ connecting to github with ssh
+ https://help.github.com/articles/connecting-to-github-with-ssh/
+ https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+
+
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+
+USE git bash
+> ssh-keygen -t rsa -b 4096 -C "raybowman2017b@gmail.com"
+
+    -t --- specify the type to create (using rsa)
+    -b --- specify the number of bits (4096)
+    -C --- specify the associated account email address
+
+......................
+
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+$ ssh-keygen -t rsa -b 4096 -C "raybowman2017b@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/Sys_2016_07_25/.ssh/id_rsa):
+Created directory '/c/Users/Sys_2016_07_25/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/Sys_2016_07_25/.ssh/id_rsa.
+Your public key has been saved in /c/Users/Sys_2016_07_25/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:5x2nm3LOREULntrMNDL8xWKo0okIjBDEtY8qam6WBjI raybowman2017b@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|=o..        . .  |
+|.+  .    . o = . |
+|. o.      = B =  |
+|   .o. o o @ =   |
+|   ...o S o B .  |
+|E .    . o o +   |
+|+o.       . +    |
+|o*        .o.o   |
+|B.         +=    |
++----[SHA256]-----+
+
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+$ ls -a ~/.ssh
+./  ../  id_rsa  id_rsa.pub
+
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+
+.......................
+
+
+id_rsa --- private key file
+id_rsa.pub --- public key file
+
+
+ssh agent --- make sure that it is running
+
+USE git bash
+> eval "$(ssh-agent -s)"
+
+.......................
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+$ eval "$(ssh-agent -s)"
+Agent pid 13736
+
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+.......................
+
+
+add the new key
+    --- provide the path to the private key file
+
+USE git bash
+> ssh-add  ~/.ssh/id_rsa
+
+.......................
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+$ ssh-add  ~/.ssh/id_rsa
+Identity added: /c/Users/Sys_2016_07_25/.ssh/id_rsa (/c/Users/Sys_2016_07_25/.ssh/id_rsa)
+
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+.......................
+
+Take the contents of the id_rsa.pub file and copy it to the clipboard
+
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+
+USE git bash
+> clip < ~/.ssh/id_rsa.pub
+
+Copy the PUBLIC key to the clipboard, go to
+   profile > settings > SSH and GPG keys ...
+
+https://github.com/
+https://github.com/settings/profile
+https://github.com/settings/keys
+
+Give a meaningful title, then paste the key into the window.
+
+
+Run a test command
+   make a very basic connection to the gethub servers
+
+USE git bash
+> ssh -T git@github.com
+
+.......................
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+$ ssh -T git@github.com
+The authenticity of host 'github.com (192.30.253.113)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+Hi RayBowman2017b! You've successfully authenticated, but GitHub does not provide shell access.
+
+Sys_2016_07_25@Comp20160726 MINGW64 ~
+.......................
+
+
+PUSH the code to github
+
+go to repository page
+https://github.com/RayBowman2017b?tab=repositories
+https://github.com/RayBowman2017b/react-course-2-expensify-app
+
+COPY SSH url
+git@github.com:RayBowman2017b/react-course-2-expensify-app.git
+
+RUN a command from git to let git know where our remote code should be
+
+WINDOWS COMMAND PROMPT
+> git remote add origin git@github.com:RayBowman2017b/react-course-2-expensify-app.git
+
+> git remote
+> git remote -v
+
+
+PUSH the code up
+
+> git push -u origin master
+
+    -u --- creates the association between local code and the upstream repository
+
+.......................
+K:\A01_Udemy\C023_Complete_React_Web_Dev\Sections\a01_final_projects\proj_02\Budget-app>git push -u origin master
+Warning: Permanently added the RSA host key for IP address '192.30.253.112' to the list of known hosts.
+Counting objects: 145, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (138/138), done.
+Writing objects: 100% (145/145), 587.68 KiB | 1.18 MiB/s, done.
+Total 145 (delta 37), reused 0 (delta 0)
+remote: Resolving deltas: 100% (37/37), done.
+remote:
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/RayBowman2017b/react-course-2-expensify-app/pull/new/master
+remote:
+To github.com:RayBowman2017b/react-course-2-expensify-app.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+K:\A01_Udemy\C023_Complete_React_Web_Dev\Sections\a01_final_projects\proj_02\Budget-app>
+.......................
+
+
+
+.......................
+.......................
+
+.......................
+.......................
+
 
 ------------------------------------------------
 ------------------------------------------------
