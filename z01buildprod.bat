@@ -1,5 +1,6 @@
+@rem zbuildit.bat
 
-@rem zwebpack.bat
+@rem from zwebpack.bat
 @rem  "build_webpack": "webpack --watch"
 
 @rem  K:\aaa_TransZ_DT201607\Ralph\Udemy\C023_Complete_React_Web_Dev\
@@ -9,4 +10,4 @@ copy  .\webpack.config.js  ..\..\..\webpack.config.js
 copy  .\.babelrc  ..\..\..\.babelrc
 @rem yarn run webpack-dev-server --watch
 @rem 
-yarn run dev-server
+yarn run build:prod

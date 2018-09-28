@@ -5,6 +5,8 @@
 ##################################################################################################
 
 
+        [ HIGH-LEVEL OPERATIONS ref-drc-1; ]
+
         [ APP ROUTER ref-drc-1;]
 
         [ EXPENSE DASHBOARD PAGE ref-drc-1;]
@@ -29,8 +31,18 @@
 ...................................................................................................
 
 
+...................................................................................................
+        [ HIGH-LEVEL OPERATIONS ref-drc-1; ^B]
+...................................................................................................
+
+
 //  [S07251663|index.html::DRC1: Budget App^B]
 
+
+//  [S07251663|index.html::script src="/bundle.js" drc1;^B]
+
+
+//  [S07251673|webpack.config.js::GC_active_app_file drc1;^B]
 
 //  [S07251665|sec012a_app.jsx::MP_configure_store drc1;^B]
 //  [S07251671|sec011a_L099_STR_configure_store.jsx::create Store for reducers drc1;^B]
@@ -56,6 +68,7 @@ const L_store = createStore
 
 
 //  [S07251665|sec012a_app.jsx::sec012a_app GC_store.subscribe drc1;^B]
+//  [S07251665|sec012a_app.jsx::MP_getVisibleExpenses drc1;^B]
 //  [S07251665|sec012a_app.jsx::add mock data to GC_store drc1;^B]
 //  [S07251665|sec012a_app.jsx::ReactDOM.render GC_provider_for_router^B]
 

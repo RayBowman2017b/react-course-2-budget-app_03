@@ -47,6 +47,8 @@ import { MP_addExpense, MP_removeExpense, MP_editExpense } from "./sec011a_L099_
 //  import { MP_setTextFilter, MP_sortByDate, MP_sortByAmount, MP_setStartDate, MP_setEndDate  } from "./sec011a_L099_actions/sec011a_L099_ACTN_filters.jsx";
             //[S07251668|sec011a_L099_ACTN_filters.jsx::sec011a_L099_ACTN_filters.jsx ref2;^B]
 import  MP_getVisibleExpenses from "./sec011a_L099_selectors/sec011a_L099_SLCT_expenses.jsx";
+            //[ MP_getVisibleExpenses ref1;]
+            //[ MP_getVisibleExpenses xxx]
 
 //=====================================================================
 
@@ -59,13 +61,16 @@ const GC_store = MP_configure_store ();
    //  [S07251672|SEC_013.txt::SEC 013  L 131 notes-01;]
    //  code to create test data removed
 
-if (false)
+//if (false)
+if (true)
             //[ if (false)  :end1;]
 {
 GC_store.subscribe ( () =>
   {
     const L_state = GC_store.getState ();
     const L_visibleExpenses = MP_getVisibleExpenses (L_state.expenses, L_state.filters);
+                          //[ MP_getVisibleExpenses ref1;^B]
+    //[S07251664|A01_DIrectory_01.txt::MP_getVisibleExpenses drc1;^B]
     //console.log (GC_store.getState());
     console.log (L_visibleExpenses);
   }                );

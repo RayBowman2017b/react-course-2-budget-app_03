@@ -104,13 +104,6 @@ const GC_active_project_path =
       //  "K:\aaa_TransZ_DT201607\Ralph\Udemy\C023_Complete_React_Web_Dev\Sections\SEC_010_Redux\proj_02\Budget-app\zzz_playground"
 console.log (' ******** GC_active_project_path is -> ', GC_active_project_path);
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebpackMd5Hash = require('webpack-md5-hash');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-
 const GC_mod_path = require ('path');
 const GC_path_public = GC_mod_path.join (__dirname, 'public');
 const GC_webpack = require ('webpack');
@@ -157,37 +150,6 @@ const xxxGC_actual_source_JSX = './' + GC_active_app_folder
                                   + GC_active_app_file;
  *******************************************************************/
 
-const GC_actual_path_dist =
-    GC_mod_path.join
-        (
-            'K:/',
-            GC_course_section_path[0],
-            GC_course_section_path[1],
-            GC_course_section_path[2],
-            GC_active_app_folder,
-            GC_active_project_path[0],
-            GC_active_project_path[1],
-            'dist'
-        );
-console.log ( ' --- GC_actual_path_dist is ', GC_actual_path_dist);
-
-const GC_actual_path_favicon =
-    GC_mod_path.join
-        (
-            'K:/',
-            GC_course_section_path[0],
-            GC_course_section_path[1],
-            GC_course_section_path[2],
-            GC_active_app_folder,
-            GC_active_project_path[0],
-            GC_active_project_path[1],
-            'public',
-            'images'
-            // 'favicon.png'
-        );
-console.log ( ' --- GC_actual_path_favicon is ', GC_actual_path_favicon);
-
-
             // GC_course_section_path[3],
             // GC_course_section_path[4],
 const GC_actual_source_JSX =
@@ -224,33 +186,6 @@ const GC_actual_path_styles =
             'src',
             'styles'
         );
-
-const GC_actual_source_index =
-    GC_mod_path.join
-        (
-            'K:/',
-            GC_course_section_path[0],
-            GC_course_section_path[1],
-            GC_course_section_path[2],
-            //  "./",
-            GC_active_app_folder,
-            GC_active_project_path[0],
-            GC_active_project_path[1],
-            'src',
-            'index_02.html'
-        );
-
-function GF_copy_webpack_plugin ()
-{
-    // return new CopyWebpackPlugin (
-    //     [ ...patterns ], options
-    //     );
-     //new CopyWebpackPlugin([{ from: path.join(__dirname, '../resources')}], { copyUnmodified: true }),
-
-    return new CopyWebpackPlugin (
-        [ { from: GC_actual_path_favicon }], { copyUnmodified: true }
-        );
-}
 
 //=======================================================================
 
@@ -310,35 +245,31 @@ console.log ( ' --- GC_actual_source_JSX is ', GC_mod_path.parse (GC_actual_sour
 //    entry: GC_redux_playground_JSX,
 
 
-//module.exports = {
-function GC_build_config (env)  {
-
-    const L_loader_with_source_map = (P_loader) =>
+module.exports =
+{
+    entry: GC_actual_source_JSX,
+       //[ GC_actual_source_JSX module.exports-ref1;^B]
+    output:
     {
-        return ( { loader: P_loader, options: { sourceMap: true } } );
-    }
+        path: GC_actual_path_public,
+          //[ GC_actual_path_public module.exports-ref1;^B]
+        filename: 'bundle.js'
+    },
+    mode: 'development',
+    module:
+    {
+        rules :
+        [
+          {
+            loader: 'babel-loader',
+            test: /\.jsx$/,
+            exclude: /node_modules/
+          },
+          {
+            test: /\.s?css$/,
 
-    let L_config_obj = {
-
-        entry: GC_actual_source_JSX,
-        output:
-        {
-            //path: GC_actual_path_public,
-            //  filename: 'bundle.js'
-            filename: '[name].[chunkhash].js'
-        },
-        module:
-        {
-            rules :
-            [
-              {
-                loader: 'babel-loader',
-                test: /\.jsx$/,
-                exclude: /node_modules/
-              },
-              // {
-              //   test: /\.s?css$/,
-
+//  Maximilian Schwarzmuller lecture - 11:26 AM 9/22/2018
+//  K:\A01_Udemy\Z01_General_Notes\webpack_01.txt
             // use :
             // [
             //     'style-loader',
@@ -346,91 +277,28 @@ function GC_build_config (env)  {
             //     'sass-loader'
             // ]
 
+            use: extractPlugin.extract ( {
+                use: ['css-loader', 'sass-loader']
+            } )
+          }
+        ]
+    },
+    plugins: [
+        //  https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+        // load `moment/locale/ja.js` and `moment/locale/it.js`
+        new GC_webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ja|it/),
+
 //  Maximilian Schwarzmuller lecture - 11:26 AM 9/22/2018
 //  K:\A01_Udemy\Z01_General_Notes\webpack_01.txt
-              //   use: extractPlugin.extract ( {
-              //       use: ['css-loader', 'sass-loader']
-              //   } )
-              // }
+        extractPlugin
 
-                {
-                    test: /\.s?css$/,
-                    use:
-                    [
-                        'style-loader',
-                        MiniCssExtractPlugin.loader,
-                        L_loader_with_source_map('css-loader'),
-                        L_loader_with_source_map('postcss-loader'),
-                        L_loader_with_source_map('sass-loader')
-                    ]
-                },
-                {
-                   test: /\.(jpg|jpeg|gif|png|ico)$/,
-                   exclude: /node_modules/,
-                   loader:'file-loader?name=img/[path][name].[ext]&context=./app/images'
-                }
-            ]
-        },
-        plugins: [
-            //  https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
-            // load `moment/locale/ja.js` and `moment/locale/it.js`
-            new GC_webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ja|it/),
-
-    //  Maximilian Schwarzmuller lecture - 11:26 AM 9/22/2018
-    //  K:\A01_Udemy\Z01_General_Notes\webpack_01.txt
-    //  extractPlugin
-            new CleanWebpackPlugin('dist', {} ),
-            new MiniCssExtractPlugin({
-                filename: 'style.[contenthash].css',
-            }),
-            new HtmlWebpackPlugin({
-                inject: false,
-                hash: true,
-                //  template: './src/index_02.html',
-                //  template: './src/index_02.html',
-                template: GC_actual_source_index,
-              //  filename: 'index_dist.html'
-                filename: 'index.html'
-            }),
-            new WebpackMd5Hash(),
-            GF_copy_webpack_plugin ()
-        ]
-    };
-
-
-    console.log (`env --- ${env}`)
-
-//    mode: "development",
-//    mode: "production",
-//    mode: "none",
-
-    if (env === 'production')
+    ],
+    devtool: 'cheap-module-eval-source-map',
+    devServer:
     {
-        L_config_obj.devtool = 'source-map';
-        L_config_obj.mode = "production";
-        L_config_obj.output.path = GC_actual_path_dist;
+        contentBase: GC_actual_path_public,
+                 //[ GC_actual_path_public module.exports-ref2;^B]
+        historyApiFallback: true
     }
-    else
-    if (env === 'development')
-    {
-        //L_config_obj.devtool = 'cheap-module-eval-source-map';
-        L_config_obj.devtool = 'inline-source-map';
-        L_config_obj.mode = "development";
-        L_config_obj.output.path = GC_actual_path_public;
-
-        L_config_obj.devServer = {
-            //contentBase: GC_dist_path,
-            contentBase: GC_actual_path_public,
-            host: "0.0.0.0",
-            port: 9900,
-            historyApiFallback: true
-        };
-    }
-    else
-        console.log (`   *** BAD PARAMETER for env: ${env}`)
-
-    return L_config_obj;
 };
-
-
-module.exports = GC_build_config;
+  

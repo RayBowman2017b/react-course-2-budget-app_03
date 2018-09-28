@@ -1,11 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\A01_Course_Notes",
     "\\A01_MISC",
+    "\\A01_Upper_Level_Files",
     "\\public",
     "\\src",
     "\\zzz_playground"
   ],
-  "SelectedNode": "\\src\\sec009a_components",
+  "SelectedNode": "\\webpack.config.js",
   "PreviewInSolutionExplorer": false
 }

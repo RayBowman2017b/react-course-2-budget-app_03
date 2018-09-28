@@ -7,6 +7,10 @@
 <html>
 <head>
     <meta charset="utf-8">
+
+    <!-- FROM : K:\A01_Udemy\webpack-boilerplate-master_01\src\index_02.html -->
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+
     <!-- //  SEC_008 --- 72. Mobile Considerations 12:57 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -68,8 +72,11 @@
       <script src="/scripts/app.js"></script>
      -->
 
-    <script src="/bundle.js"></script>
+  <!-- <script src="/bundle.js"></script> -->
                 <!--//  [S07251664|A01_DIrectory_01.txt::script src="/bundle.js" drc1;^B]-->
+    <!-- FROM : K:\A01_Udemy\webpack-boilerplate-master_01\src\index_02.html -->
+<script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+
 
 </body>
 </html>

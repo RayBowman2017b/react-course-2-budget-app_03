@@ -1,0 +1,74 @@
+z01_Notes_01.txt
+
+
+env --- production
+clean-webpack-plugin: K:\A01_Udemy\C023_Complete_React_Web_Dev\Sections\dist has been removed.
+(node:12084) DeprecationWarning: Tapable.plugin is deprecated. Use new API on `.hooks` instead
+(node:12084) DeprecationWarning: Chunk.mapModules: Use Array.from(chunk.modulesIterable, fn) instead
+Hash: 5b3d1a67999b24952255
+Version: webpack 4.16.1
+Time: 90395ms
+Built at: 2018-09-27 21:43:10
+                             Asset      Size  Chunks                    Chunk Names
+    style.8a368f544ff29cbb7567.css  24.5 KiB       0  [emitted]         main
+      main.f02794797b27a2c5c61c.js   482 KiB       0  [emitted]  [big]  main
+style.8a368f544ff29cbb7567.css.map  43.1 KiB       0  [emitted]         main
+  main.f02794797b27a2c5c61c.js.map  1.65 MiB       0  [emitted]         main
+                        index.html  2.38 KiB          [emitted]
+                       favicon.png  1.26 KiB          [emitted]
+Entrypoint main [big] = style.8a368f544ff29cbb7567.css main.f02794797b27a2c5c61c.js style.8a368f544ff29cbb7567.css.map main.f02794797b27a2c5c61c.js.map
+ [28] ./node_modules/react-redux/es/index.js + 23 modules 43 KiB {0} [built]
+      |    24 modules
+ [38] ./a01_final_projects/proj_02/Budget-app/src/sec011a_L099_actions/sec011a_L099_ACTN_expenses.jsx 3.92 KiB {0} [built]
+ [39] ./node_modules/react-router-dom/es/index.js + 34 modules 80.3 KiB {0} [built]
+      |    35 modules
+[109] ./a01_final_projects/proj_02/Budget-app/src/sec011a_L099_selectors/sec011a_L099_SLCT_expenses.jsx 2.94 KiB {0} [built]
+[116] ./a01_final_projects/proj_02/Budget-app/src/sec012a_app.jsx 5.39 KiB {0} [built]
+[127] ./a01_final_projects/proj_02/Budget-app/src/sec009a_routers/sec009a_app_router.jsx 4.5 KiB {0} [built]
+[128] ./a01_final_projects/proj_02/Budget-app/src/sec009a_components/sec009a_CLS_add_expense_page.jsx 7.43 KiB {0} [built]
+[184] ./a01_final_projects/proj_02/Budget-app/src/sec009a_components/sec009a_CLS_edit_expense_page.jsx 10.2 KiB {0} [built]
+[185] ./a01_final_projects/proj_02/Budget-app/src/sec009a_components/sec009a_SFC_expense_dashboard_page.jsx 1.6 KiB {0} [built]
+[190] ./a01_final_projects/proj_02/Budget-app/src/sec009a_components/sec009a_SFC_header.jsx 1.59 KiB {0} [built]
+[192] ./a01_final_projects/proj_02/Budget-app/src/sec009a_components/sec009a_SFC_not_found_page.jsx 1.18 KiB {0} [built]
+[193] ./a01_final_projects/proj_02/Budget-app/src/sec011a_L099_store/sec011a_L099_STR_configure_store.jsx 2.03 KiB {0} [built]
+[194] ./a01_final_projects/proj_02/Budget-app/src/sec011a_L099_reducers/sec011a_L099_RDCR_expenses.jsx 3.59 KiB {0} [built]
+[200] ./a01_final_projects/proj_02/Budget-app/src/styles/styles.scss 1.71 KiB {0} [built]
+[201] ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader??ref--5-2!./node_modules/postcss-loader/src??ref--5-3!./node_modules/sass-loader/lib/loader.js??ref--5-4!./a01_final_projects/proj_02/Budget-app/src/styles/styles.scss 39 bytes {0} [built]
+    + 204 hidden modules
+
+WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets:
+  main.f02794797b27a2c5c61c.js (482 KiB)
+
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  main (507 KiB)
+      style.8a368f544ff29cbb7567.css
+      main.f02794797b27a2c5c61c.js
+
+
+WARNING in webpack performance recommendations:
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+Child html-webpack-plugin for "index.html":
+     1 asset
+    Entrypoint undefined = index.html
+    [0] ./node_modules/html-webpack-plugin/lib/loader.js!./a01_final_projects/proj_02/Budget-app/src/index_02.html 2.81 KiB {0} [built]
+    [2] (webpack)/buildin/global.js 489 bytes {0} [built]
+    [3] (webpack)/buildin/module.js 497 bytes {0} [built]
+        + 1 hidden module
+Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-2!node_modules/postcss-loader/src/index.js??ref--5-3!node_modules/sass-loader/lib/loader.js??ref--5-4!a01_final_projects/proj_02/Budget-app/src/styles/styles.scss:
+    Entrypoint mini-css-extract-plugin = *
+    [0] ./node_modules/css-loader??ref--5-2!./node_modules/postcss-loader/src??ref--5-3!./node_modules/sass-loader/lib/loader.js??ref--5-4!./a01_final_projects/proj_02/Budget-app/src/styles/styles.scss 7.17 KiB {0} [built]
+        + 1 hidden module
+Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-2!node_modules/postcss-loader/src/index.js??ref--5-3!node_modules/sass-loader/lib/loader.js??ref--5-4!node_modules/normalize.css/normalize.css:
+    Entrypoint mini-css-extract-plugin = *
+       2 modules
+Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-2!node_modules/postcss-loader/src/index.js??ref--5-3!node_modules/sass-loader/lib/loader.js??ref--5-4!node_modules/react-dates/lib/css/_datepicker.css:
+    Entrypoint mini-css-extract-plugin = *
+       2 modules
+Done in 103.72s.
+
+
+
