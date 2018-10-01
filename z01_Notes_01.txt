@@ -1,3 +1,8 @@
+
+repository:
+https://github.com/RayBowman2017b/react-course-2-expensify-app-pack-too-big
+
+
 K:\A01_Udemy\Budget-app_03>yarn run build:prod
 yarn run v1.7.0
 $ webpack -p --env=production
