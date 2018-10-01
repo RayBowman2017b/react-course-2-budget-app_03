@@ -42,52 +42,32 @@ import 'react-dates/initialize';
 
 
 import { MP_addExpense, MP_removeExpense, MP_editExpense } from "./sec011a_L099_actions/sec011a_L099_ACTN_expenses.jsx";
-     //[ MP_addExpense exe1;]
-     //[ MP_addExpense xxx]
-//  import { MP_setTextFilter, MP_sortByDate, MP_sortByAmount, MP_setStartDate, MP_setEndDate  } from "./sec011a_L099_actions/sec011a_L099_ACTN_filters.jsx";
-            //[S07251668|sec011a_L099_ACTN_filters.jsx::sec011a_L099_ACTN_filters.jsx ref2;^B]
 import  MP_getVisibleExpenses from "./sec011a_L099_selectors/sec011a_L099_SLCT_expenses.jsx";
-            //[ MP_getVisibleExpenses ref1;]
-            //[ MP_getVisibleExpenses xxx]
 
 //=====================================================================
 
 const GC_store = MP_configure_store ();
-//[S07251671|sec011a_L099_STR_configure_store.jsx::EXE1: MP_configure_store <1>^B]
-                      //[S07251664|A01_DIrectory_01.txt::MP_configure_store drc1;^B]
-
-   //  [S07251664|A01_DIrectory_01.txt::sec012a_app GC_store.subscribe drc1;^B]
-
-   //  [S07251672|SEC_013.txt::SEC 013  L 131 notes-01;]
-   //  code to create test data removed
 
 //if (false)
-if (true)
-            //[ if (false)  :end1;]
 {
-GC_store.subscribe ( () =>
-  {
-    const L_state = GC_store.getState ();
-    const L_visibleExpenses = MP_getVisibleExpenses (L_state.expenses, L_state.filters);
-                          //[ MP_getVisibleExpenses ref1;^B]
-    //[S07251664|A01_DIrectory_01.txt::MP_getVisibleExpenses drc1;^B]
-    //console.log (GC_store.getState());
-    console.log (L_visibleExpenses);
-  }                );
 
 const L_august_01_2018 = 1533142800000;
 const L_august_03_2018 = 1533315600000;
 const L_sept_04_2018 = 1536080400000;
 
 
-//  [S07251664|A01_DIrectory_01.txt::add mock data to GC_store drc1;^B]
 GC_store.dispatch ( MP_addExpense ({ description: 'Water Bill', amount: 3300, createdAt: L_august_01_2018 }) );
 GC_store.dispatch ( MP_addExpense ({ description: 'Gas Bill', amount: 2200, createdAt: L_august_03_2018 }) );
 GC_store.dispatch ( MP_addExpense ({ description: 'Rent', amount: 109500, createdAt: L_sept_04_2018 }) );
-                //[ MP_addExpense exe1;^B]
-}
-            //[ if (false)  :end1;^B]
 
+GC_store.subscribe ( () =>
+  {
+    const L_state = GC_store.getState ();
+    const L_visibleExpenses = MP_getVisibleExpenses (L_state.expenses, L_state.filters);
+    console.log (L_visibleExpenses);
+  }                );
+
+}
 
 
 //  SEC_011 --- 104. Dropdown for Picking SortBy 8:41
@@ -105,7 +85,6 @@ GC_store.dispatch ( MP_addExpense ({ description: 'Rent', amount: 109500, create
 
 console.log ("  --- GC_store.getState()", GC_store.getState());
 
-//=====================================================================
 
 //  SEC_011 --- 101. Connecting Store and Component with React-Redux 15:40
 
@@ -113,24 +92,15 @@ console.log ("  --- GC_store.getState()", GC_store.getState());
 const GC_provider_for_router = (
     <Provider store={GC_store}>
         <SFC_app_router />
-        {/* //[S07251666|sec009a_app_router.jsx::EXE1: GC_app_router <1>^B] */}
     </Provider>
     );
 
-//=====================================================================
 
 //  SEC_004 --- 27. Nesting Components 5:43
 
-//  sec011_app_01
 const GC_appRoot_01 = document.getElementById('sec011_app_01');
-      //[S07251663|index.html::getElementById('sec011_app_01'); ref1;^B]
-
-//  [S07251664|A01_DIrectory_01.txt::ReactDOM.render GC_provider_for_router^B]
 
 ReactDOM.render
-      //  (GC_routes,
-//  SEC_011 --- 101. Connecting Store and Component with React-Redux 15:40
-      //(<SFC_app_router />,
       (GC_provider_for_router,
        GC_appRoot_01);
 
