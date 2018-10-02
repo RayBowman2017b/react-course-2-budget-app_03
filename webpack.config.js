@@ -157,7 +157,8 @@ function GC_build_config (env)  {
     {
         L_config_obj.devtool = 'source-map';
         L_config_obj.mode = "production";
-        L_config_obj.output.path = GC_actual_path_dist ();
+        //L_config_obj.output.path = GC_actual_path_dist ();
+        L_config_obj.output.path = GC_actual_path_public ();
 
         L_config_obj.optimization.splitChunks =
         {
@@ -171,14 +172,14 @@ function GC_build_config (env)  {
         //L_config_obj.plugins.push(new BundleAnalyzerPlugin());
 
         // USE THIS to generate JSON file.
-        L_config_obj.plugins.push(new BundleAnalyzerPlugin(
-        {
-            analyzerMode: "disabled",
-            generateStatsFile: true,
-            statsFilename: "BundleAnalyzer_01.json",
-            defaultSizes: "parsed"
-        }
-            ) );
+        // L_config_obj.plugins.push(new BundleAnalyzerPlugin(
+        // {
+        //     analyzerMode: "disabled",
+        //     generateStatsFile: true,
+        //     statsFilename: "BundleAnalyzer_01.json",
+        //     defaultSizes: "parsed"
+        // }
+        //  ) );
     }
     else
     if (env === 'development')
