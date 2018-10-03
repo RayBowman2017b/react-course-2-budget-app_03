@@ -13,13 +13,46 @@ const GC_app = GC_express();
 const GC_path = require('path');
 const GC_public_path = GC_path.join(__dirname, '..', 'public');
 const GC_dist_path = GC_path.join(__dirname, '..', 'dist');
-const GC_default_path = GC_path.join(GC_public_path, 'index.html');
-//const GC_default_path = GC_path.join(GC_dist_path, 'index.html');
+//const GC_default_path = GC_path.join(GC_public_path, 'index.html');
+const GC_default_path = GC_path.join(GC_dist_path, 'index.html');
 const GC_port = 3000;
 
+const webpack = require("webpack");
+
+//import webpackMiddleware from 'webpack-dev-middleware';
+//import webpackConfig from '../webpack.config.js';
+// const webpackMiddleware = require ('webpack-dev-middleware');
+// const webpackConfig = require ('../webpack.config.js');
+
+webpack({
+  // Configuration Object
+}, (err, stats) => {
+  if (err) {
+    console.error(err.stack || err);
+    if (err.details) {
+      console.error(err.details);
+    }
+    return;
+  }
+
+  const info = stats.toJson();
+
+  if (stats.hasErrors()) {
+    console.error(info.errors);
+  }
+
+  if (stats.hasWarnings()) {
+    console.warn(info.warnings);
+  }
+
+  // Log result...
+});
+
+
 //  use the middleware GC_express.static(GC_public_path)
-  GC_app.use(GC_express.static(GC_public_path));
-//  GC_app.use(GC_express.static(GC_dist_path));
+//  GC_app.use(GC_express.static(GC_public_path));
+  GC_app.use(GC_express.static(GC_dist_path));
+//  GC_app.use(webpackMiddleware(webpack(webpackConfig('production'))));
 
 function unhandled_requests (req, res)
 {

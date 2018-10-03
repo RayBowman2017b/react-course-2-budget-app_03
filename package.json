@@ -75,6 +75,7 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.0.8",
+    "webpack-dev-middleware": "^3.4.0",
     "webpack-md5-hash": "0.0.6"
   }
 }

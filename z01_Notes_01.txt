@@ -1,9 +1,103 @@
 
+
+//  node A02_sec013_135_server\server_135.js
+//  node  babel-node A02_sec013_135_server\server_135.js  --ignore client
+//  node   A02_sec013_135_server\server_135.js  --ignore client
+
+
+https://dev.to/aurelkurtula/setting-up-a-minimal-node-environment-with-webpack-and-babel--1j04
+
+npm i --save-dev webpack-dev-middleware
+npm i --save-dev babel-node
+
+
+"scripts": {
+    "start-node": "nodemon --exec babel-node server.js  --ignore client"
+    "start-node": "node --exec babel-node server.js  --ignore client"
+  }
+
+................................................
+
+import express from 'express'; 
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackConfig from './webpack.config.js';
+
+const app = express();
+app.use(webpackMiddleware(webpack(webpackConfig)));
+
+app.get('/api', (req, res) =>  )
+
+app.listen(4000, () => {
+  console.log('Listening');
+});
+
+................................................
+
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
 repository:
 https://github.com/RayBowman2017b/react-course-2-expensify-app-pack-too-big
 
 > git push -u origin_02 master
 
+
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+
+Entry module not found: Error: Can't resolve './src'
+
+K:\A01_Udemy\Budget-app_03>node A02_sec013_135_server\server_135.js
+server is up
+[ 'Entry module not found: Error: Can\'t resolve \'./src\'
+ in \'K:\\A01_Udemy\\Budget-app_03\'
+ resolve \'./src\' in \'K:\\A01_Udemy\\Budget-app_03\'
+ using description file:
+ K:\\A01_Udemy\\Budget-app_03\\package.json (relative path: .)
+ Field \'browser\' doesn\'t contain a valid alias configuration
+ using description file: K:\\A01_Udemy\\Budget-app_03\\package.json (relative path: ./src)
+ no extension
+ Field \'browser\' doesn\'t contain a valid alias configuration
+ K:\\A01_Udemy\\Budget-app_03\\src is not a file
+ .wasm
+ Field \'browser\' doesn\'t contain a valid alias configuration
+ K:\\A01_Udemy\\Budget-app_03\\src.wasm doesn\'t exist
+ .mjs
+ Field \'browser\' doesn\'t contain a valid alias configuration
+ K:\\A01_Udemy\\Budget-app_03\\src.mjs doesn\'t exist
+ .js
+Field \'browser\' doesn\'t contain a valid alias configuration
+K:\\A01_Udemy\\Budget-app_03\\src.js doesn\'t exist
+.json
+Field \'browser\' doesn\'t contain a valid alias configuration
+K:\\A01_Udemy\\Budget-app_03\\src.json doesn\'t exist
+as directory
+existing directory
+using path: K:\\A01_Udemy\\Budget-app_03\\src\\index
+using description file: K:\\A01_Udemy\\Budget-app_03\\package.json (relative path: ./src/index)
+no extension
+Field \'browser\' doesn\'t contain a valid alias configuration
+K:\\A01_Udemy\\Budget-app_03\\src\\index doesn\'t exist
+.wasm
+Field \'browser\' doesn\'t contain a valid alias configuration
+K:\\A01_Udemy\\Budget-app_03\\src\\index.wasm doesn\'t exist
+.mjs
+Field \'browser\' doesn\'t contain a valid alias configuration
+K:\\A01_Udemy\\Budget-app_03\\src\\index.mjs doesn\'t exist
+.js
+Field \'browser\' doesn\'t contain a valid alias configuration
+K:\\A01_Udemy\\Budget-app_03\\src\\index.js doesn\'t exist
+.json
+Field \'browser\' doesn\'t contain a valid alias configuration
+K:\\A01_Udemy\\Budget-app_03\\src\\index.json doesn\'t exist' ]
+
+[ 'configuration\nThe \'mode\' option has not been set, webpack
+ will fallback to \'production\' for this value. Set \'mode\' option
+ to \'development\' or \'production\' to enable defaults for each environment.
+ You can also set it to \'none\' to disable any default behavior.
+ Learn more: https://webpack.js.org/concepts/mode/' ]
+
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 K:\A01_Udemy\Budget-app_03>yarn run build:prod
 yarn run v1.7.0

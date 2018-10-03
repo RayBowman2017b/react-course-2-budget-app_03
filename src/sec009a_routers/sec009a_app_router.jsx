@@ -60,6 +60,10 @@ const SFC_not_found_page = Loadable({
 
 //  ----------------------------------------------------------------
 
+console.log ('router called');
+
+//  ----------------------------------------------------------------
+
 const GC_app_router = () => (
     <BrowserRouter>
   <div>

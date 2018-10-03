@@ -1,7 +1,8 @@
 
 //  webpack.config.js
 
-  const GC_active_app_file = "sec012a_app.jsx";
+//  const GC_active_app_file = "sec012a_app.jsx";
+  const GC_active_app_file = "sec012a_app.js";
 
 console.log (' ******** GC_active_app_file is ->' + GC_active_app_file);
 
@@ -98,7 +99,7 @@ function GC_build_config (env)  {
             [
               {
                 loader: 'babel-loader',
-                test: /\.jsx$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/
               },
                 {
@@ -157,8 +158,8 @@ function GC_build_config (env)  {
     {
         L_config_obj.devtool = 'source-map';
         L_config_obj.mode = "production";
-        //L_config_obj.output.path = GC_actual_path_dist ();
-        L_config_obj.output.path = GC_actual_path_public ();
+        L_config_obj.output.path = GC_actual_path_dist ();
+        //L_config_obj.output.path = GC_actual_path_public ();
 
         L_config_obj.optimization.splitChunks =
         {
